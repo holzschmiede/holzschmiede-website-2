@@ -1,7 +1,7 @@
 {
   "name": "holzschmiede-website",
   "version": "1.0.0",
-  "description": "The website of Holzschmiede",
+  "description": "Die website der Holzschmiede",
   "main": "index.js",
   "repository": {
     "type": "git",
