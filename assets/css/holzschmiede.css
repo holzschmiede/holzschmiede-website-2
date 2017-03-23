@@ -1,0 +1,189 @@
+
+.header {
+    text-align: center;
+    background: #458B74 url("../images/bg-header.jpg") repeat scroll top left;
+    position: relative;
+    overflow: visible;
+    padding-top: 2.5rem;
+    padding-bottom: 4.9rem;
+}
+
+.header .headline {
+    color: #ffe; 
+}
+
+.header-subnav {
+    float: none;
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    bottom: 0;
+    width: 100%; 
+}
+  
+.header-subnav li {
+    display: inline-block;
+}
+    
+.header-subnav li a {
+    padding: 0.9rem 1rem;
+    font-size: 0.75rem;
+    color: #ffe;
+    text-transform: uppercase;
+    display: block;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.25s ease-in-out;
+    border-top: 1px solid rgba(250, 250, 250, 0.20);
+    border-left: 1px solid rgba(250, 250, 250, 0.20);
+    border-right: 1px solid rgba(250, 250, 250, 0.20); 
+}
+
+/* for iPhone 4 and 5 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+
+    .header-subnav li a {
+        padding: 0.9rem 0.9rem;
+        font-size: 0.65rem;
+    }
+}
+
+.header-subnav li a.is-active {
+    background: rgba(250, 250, 250, 0.15);
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white; 
+}
+
+.header-subnav li a:hover {
+    background: rgba(250, 250, 250, 0.15);
+    transition: all 0.25s ease-in-out;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white; 
+}
+
+.content-header {
+    color: #315c2c;
+    margin: 0 0 1rem 0;
+}
+
+footer .content-header {
+    color: #5fad56;
+}
+
+footer .content-header {
+    text-decoration: underline;
+}
+
+.striped-page-sections .page-section:nth-child(even) {
+	background-color: #efefef;
+}
+ 
+ .page-section {
+    border-bottom: 2px solid #F2F2F2;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    color: #545454;
+}
+
+.footer-shadow {
+    border-bottom: 1px solid #011929;
+}
+
+.call-to-action  p,
+.call-to-action  a {
+    margin: 0px;
+}
+
+.footer {
+    /*height: 250px;*/
+    background: #458B74 url("../images/bg-header-2-tile.jpg") repeat scroll top left;
+    /*background: #458B74 url("../images/tile/17.jpg") repeat scroll top left;*/
+    position: relative;
+    overflow: visible;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color: #fff;
+}
+
+.linklist a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.textarea-bigger {
+    height: 10rem;
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+    .page-section {
+        border-bottom: 2px solid #F2F2F2;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        color: #545454;
+    }
+
+    .push-down {
+        padding-top: 1rem;
+    }
+
+    .no-margin {
+        margin: 0;
+    }    
+}
+
+
+#photos {
+   /* Prevent vertical gaps */
+   line-height: 0;
+    margin: 0;
+    padding: 0;
+   -webkit-column-count: 5;
+   -webkit-column-gap:   0px;
+   -moz-column-count:    5;
+   -moz-column-gap:      0px;
+   column-count:         5;
+   column-gap:           0px;
+}
+
+#photos img {
+  /* Just in case there are inline attributes */
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1200px) {
+  #photos {
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
+@media (max-width: 1000px) {
+  #photos {
+  -moz-column-count:    3;
+  -webkit-column-count: 3;
+  column-count:         3;
+  }
+}
+@media (max-width: 800px) {
+  #photos {
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}
+@media (max-width: 400px) {
+  #photos {
+  -moz-column-count:    1;
+  -webkit-column-count: 1;
+  column-count:         1;
+  }
+}
+
+.datenschutz .content-header, 
+.impressum .content-header {
+    text-align: left;
+}

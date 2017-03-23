@@ -1,0 +1,29 @@
+        <!-- 
+            DER FUSSBEREICH 
+
+            replace with data pulled from contentful
+        -->
+        <footer class="footer">
+            <div class="row text-center">
+                <div class="columns small-12 medium-4">
+                    <h2 class="content-header">Adresse</h2>
+                    <p>{{common.companyInfo.items.[0].fields.name}}</p>
+                    <p>Inh. {{common.companyInfo.items.[0].fields.owner}} ({{common.companyInfo.items.[0].fields.ownerJobTitle}})<br>
+                    {{common.companyInfo.items.[0].fields.street}} <br>
+                    {{common.companyInfo.items.[0].fields.postalCode}} {{common.companyInfo.items.[0].fields.city}}</p>
+                </div>
+                <div class="columns small-12 medium-4 linklist">
+                    <h2 class="content-header">Kontakt</h2>
+                    <p><a href="mailto:{{ common.companyInfo.items.[0].fields.email }}">{{common.companyInfo.items.[0].fields.email}}</a></p>
+                    <p><a href="Tel:{{ common.companyInfo.items.[0].fields.phone }}">{{common.companyInfo.items.[0].fields.phone}}</a></p>
+                </div>
+                <div class="columns small-12 medium-4 linklist">
+                    <h2 class="content-header">Links</h2>
+                    <p><a href="/impressum.html">Impressum</a></p>
+                    <p><a href="/datenschutz.html">Datenschutz</a></p>
+                    <p><a href="/sitemap.html">Sitemap</a></p>
+                </div>                                
+            </div> 
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+{{> header 
+    title=data.fields.name
+    description=data.fields.metaDescription
+    keywords=data.fields.metaKeywords }}
+
+    <!-- 
+        DER CONTENTBEREICH 
+    -->    
+    <main class="striped-page-sections footer-shadow">
+        <section class="page-section">
+            <div class="row column">
+                <h2 class="content-header">{{data.fields.name}}</h2>
+                <div class="text-right">
+                    <a href="/produkte.html" class="button hollow secondary">Zurück zur Übersicht</a>
+                </div>
+            </div>
+            <div class="row column photo-carousel">
+                {{#each data.fields.pictures}}
+                    <img src="{{fields.file.url}}" alt="{{fields.description}}" />
+                {{/each}}
+            </div>
+            <div class="row column">
+                {{data.fields.description}}
+            </div>
+        </section>
+
+                    
+    </main>
+
+{{> footer }}

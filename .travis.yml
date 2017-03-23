@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "7.7.1"
+cache:
+  directories:
+    - $HOME/.npm  
+branches:
+  only:
+  - master
+install:
+  - npm install
+script:
+  - npm run start
+after_success:
+  - ./node_modules/gulp/bin/gulp.js deploy  

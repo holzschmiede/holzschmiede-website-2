@@ -1,0 +1,18 @@
+{{> header 
+    title=data.fields.title 
+    description=data.fields.description 
+    keywords=data.fields.keywords }}
+
+ <!-- 
+        DER CONTENTBEREICH 
+    -->    
+    <main class="striped-page-sections footer-shadow {{slug}}">
+        <section class="page-section">
+            <div class="row column">
+                <h2 class="content-header text-center">{{data.fields.title}}</h2>
+                {{#marked data.fields.datenschutzText}}{{/marked}}                 
+            </div>
+        </section>       
+    </main>
+
+{{> footer}}

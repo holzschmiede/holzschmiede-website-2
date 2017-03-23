@@ -1,0 +1,22 @@
+{{> header 
+    title="change this title later when in production"
+    description="change this description in production"
+    keywords="change keywords in production" }}
+    <!-- 
+        DER CONTENTBEREICH 
+    -->    
+    <main class="striped-page-sections footer-shadow">
+        <section class="page-section">
+            <div class="row column">
+                <div id="photos">
+                {{#each data.entries}}
+                    <a href="{{ _fileName }}">
+                        <img src="{{fields.pictures.[0].fields.file.url}}?w=250" alt="{{fields.description}}">
+                    </a>
+                {{/each}}
+                </div>
+            </div>
+        </section>          
+    </main>
+
+{{> footer }}
