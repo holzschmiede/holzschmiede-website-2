@@ -8,19 +8,31 @@
     -->    
     <main class="striped-page-sections footer-shadow">
         <section class="page-section">
-            <div class="row column">
-                <h2 class="content-header">{{data.fields.name}}</h2>
-                <div class="text-right">
-                    <a href="/produkte.html" class="button hollow secondary">Zurück zur Übersicht</a>
+            <div class="row">
+                <div class="large-6 columns">
+                    <img class="thumbnail raised" src="{{data.fields.pictures.[0].fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC"
+                        alt="{{fields.description}}" title="{{fields.description}}" />
+                    <div class="row small-up-4">
+                    {{#each data.fields.pictures}}
+                        <div class="column push-down">
+                            <img class="thumbnail" src="{{fields.file.url}}?fit=pad&w=125&h=125&fm=jpg&bg=rgb:CCC" 
+                                alt="{{fields.description}}" title="{{fields.description}}" />
+                        </div>
+                    {{/each}}
+                    </div>
                 </div>
-            </div>
-            <div class="row column photo-carousel">
-                {{#each data.fields.pictures}}
-                    <img src="{{fields.file.url}}" alt="{{fields.description}}" />
-                {{/each}}
-            </div>
-            <div class="row column">
-                {{data.fields.description}}
+                <div class="large-5 columns">
+                    <div class="row column">
+                        <h2>{{data.fields.name}}</h2>
+                        {{data.fields.description}} 
+                    </div>
+                    <div class="row column">
+                        <a href="#" class="button large expanded success">Holen Sie ein Angebot ein</a>
+                    </div>                                       
+                    <div class="row column">
+                        <a href="/produkte.html" class="button hollow large expanded secondary">Zurück zur Übersicht</a>
+                    </div>
+                </div>
             </div>
         </section>
 

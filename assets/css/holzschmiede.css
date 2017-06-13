@@ -187,3 +187,10 @@ footer .content-header {
 .impressum .content-header {
     text-align: left;
 }
+
+/*
+    ONLY FOR TESTING :)
+*/
+.thumbnail, .raised {
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.3);
+}

@@ -1,21 +1,22 @@
 {{> header 
-    title="change this title later when in production"
-    description="change this description in production"
-    keywords="change keywords in production" }}
+    title="Alle unsere Produkte in einer Übersicht"
+    description="Dies ist eine Übersicht über alle unsere Produkte. Stühle, Tische, Lampen, Kleiderständer und mehr. "
+    keywords="produkte, übersicht, stühle, tische, schalen, lampen, kleiderständer, holz" }}
     <!-- 
         DER CONTENTBEREICH 
     -->    
     <main class="striped-page-sections footer-shadow">
         <section class="page-section">
-            <div class="row column">
-                <div id="photos">
+            <div class="row small-up-2 medium-up-3 large-up-4 content">
                 {{#each data.entries}}
+                <div class="column column-block">
                     <a href="{{ _fileName }}">
-                        <img src="{{fields.pictures.[0].fields.file.url}}?w=250" alt="{{fields.description}}">
+                        <img src="{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&fm=jpg&bg=rgb:CCC" 
+                            class="thumbnail" alt="{{fields.description}}" title="{{fields.description}}" />
                     </a>
-                {{/each}}
-                </div>
-            </div>
+                </div>                    
+                {{/each}}                
+            </div>            
         </section>          
     </main>
 
