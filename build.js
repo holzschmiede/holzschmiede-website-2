@@ -24,6 +24,49 @@ glob.sync('helpers/*.js').forEach((fileName) => {
   )
 })
 
+//
+// Node in a tree. Used for building the html sitemap of the page from a flat array of file paths.
+//
+function Node(id) {
+    this.id = id;
+    this.children = []; // array
+}
+
+Node.prototype.getChild = function (id) {
+    var node;
+    this.children.some(function (n) {
+        if (n.id === id) {
+            node = n;
+            return true;
+        }
+    });
+    return node;
+};
+
+function printTree(_tree) {
+	if (_tree.children.length > 0) {
+  	var html = "<li>" + _tree.id + "<ul>";
+    _tree.children.forEach(subTree => {
+    	html += printTree(subTree)
+    });
+    return html + "</ul></li>";
+  } else {
+  	return "<li>" + _tree.id + "</li>";
+  }
+}
+
+function printTreeWithoutRoot(_tree) {
+	var html = "<ul>";
+  _tree.children.forEach(subTree => {
+  	html += printTree(subTree);
+  });
+  return html + "</ul>" 
+}
+
+//
+// Metalsmith config
+//
+
 Metalsmith(__dirname)
   .source('src')
   .destination('build')
@@ -46,6 +89,27 @@ Metalsmith(__dirname)
 
     callback();
   })
+  .use((files, metalsmith, callback) => {
+    var tree = new Node('root');
+
+    Object.keys(files).forEach(function (a) {
+        var parts = a.substring(0, a.lastIndexOf(".")).split('/');
+        parts.reduce(function (r, b) {
+            var node = r.getChild(b);
+            if (!node) {
+                node = new Node(b);
+                r.children.push(node);
+            }
+            return node;
+        }, tree);
+    });
+    
+    Object.keys(files).forEach(filename => {
+      files[filename].htmlSitemap = printTreeWithoutRoot(tree);
+    })
+
+    callback();
+  })  
   .use(layouts({
     engine: 'handlebars',
     partials: 'partials'

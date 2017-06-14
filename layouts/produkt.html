@@ -7,19 +7,47 @@
         DER CONTENTBEREICH 
     -->    
     <main class="striped-page-sections footer-shadow">
+
         <section class="page-section">
             <div class="row">
                 <div class="large-6 columns">
-                    <img class="thumbnail raised" src="{{data.fields.pictures.[0].fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC"
-                        alt="{{fields.description}}" title="{{fields.description}}" />
-                    <div class="row small-up-4">
-                    {{#each data.fields.pictures}}
-                        <div class="column push-down">
-                            <img class="thumbnail" src="{{fields.file.url}}?fit=pad&w=125&h=125&fm=jpg&bg=rgb:CCC" 
-                                alt="{{fields.description}}" title="{{fields.description}}" />
-                        </div>
-                    {{/each}}
-                    </div>
+
+                    <article id="slider-test">    
+                        <!-- Slider Setup -->
+                        <input checked name="slider" id="slide0" type="radio">
+                        <input name="slider" id="slide1" type="radio">
+                        <input name="slider" id="slide2" type="radio">
+                        <input name="slider" id="slide3" type="radio">
+                    
+                        <!-- The Slider -->
+                        <div id="slides" class="thumbnail">
+                            <div id="overflow">
+                                <div class="inner">
+                                {{#each data.fields.pictures}}
+                                    <article>
+                                        <img src="{{fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC"
+                                            alt="{{fields.description}}" title="{{fields.description}}" />                                            
+                                    </article>
+                                {{/each}}
+                                </div> <!-- .inner -->
+                            </div> <!-- #overflow -->
+                        </div> <!-- #slides -->
+
+                        <div id="active">
+                            <div class="row small-up-2 medium-up-3 large-up-4 content">
+                            {{#eachData data.fields.pictures}}
+                                <div class="column push-down">
+                                    <label for="slide{{index}}">
+                                        <img class="thumbnail no-margin" src="{{fields.file.url}}?fit=pad&w=125&h=125&fm=jpg&bg=rgb:CCC" 
+                                            alt="{{fields.description}}" title="{{fields.description}}" />
+                                    </label>                                        
+                                </div>
+                            {{/eachData}}  
+                            </div>
+                        </div> <!-- #active -->                                     
+    
+                    </article>
+
                 </div>
                 <div class="large-5 columns">
                     <div class="row column">
@@ -34,8 +62,7 @@
                     </div>
                 </div>
             </div>
-        </section>
-
+        </section> 
                     
     </main>
 
