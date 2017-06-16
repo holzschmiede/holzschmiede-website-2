@@ -13,12 +13,11 @@
                 <div class="large-6 columns">
 
                     <article id="slider-test">    
-                        <!-- Slider Setup -->
-                        <input checked name="slider" id="slide0" type="radio">
-                        <input name="slider" id="slide1" type="radio">
-                        <input name="slider" id="slide2" type="radio">
-                        <input name="slider" id="slide3" type="radio">
-                    
+                        <!-- Slider Setup -->                   
+                    {{#eachData data.fields.pictures}}
+                        <input {{#equal index 0}} checked {{/equal}} name="slider" id="slide{{index}}" type="radio">
+                    {{/eachData}}  
+
                         <!-- The Slider -->
                         <div id="slides" class="thumbnail">
                             <div id="overflow">
@@ -34,7 +33,7 @@
                         </div> <!-- #slides -->
 
                         <div id="active">
-                            <div class="row small-up-2 medium-up-3 large-up-4 content">
+                            <div class="row small-up-4 medium-up-8 large-up-4 content">
                             {{#eachData data.fields.pictures}}
                                 <div class="column push-down">
                                     <label for="slide{{index}}">

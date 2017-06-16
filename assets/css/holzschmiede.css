@@ -206,6 +206,10 @@ footer .content-header {
 #slide1:checked ~ #slides .inner { margin-left:-100%; }
 #slide2:checked ~ #slides .inner { margin-left:-200%; }
 #slide3:checked ~ #slides .inner { margin-left:-300%; }
+#slide4:checked ~ #slides .inner { margin-left:-400%; }
+#slide5:checked ~ #slides .inner { margin-left:-500%; }
+#slide6:checked ~ #slides .inner { margin-left:-600%; }
+#slide7:checked ~ #slides .inner { margin-left:-700%; }
 
 #overflow {
 	width: 100%;
@@ -229,7 +233,7 @@ footer .content-header {
 /* Control Setup */
 
 #active {
-	margin: 5% 0 0;
+	margin: 2% 0 0;
 	text-align: center;
 }
 
@@ -244,7 +248,11 @@ footer .content-header {
 #slide0:checked ~ #active img:nth-child(1),
 #slide1:checked ~ #active img:nth-child(2),
 #slide2:checked ~ #active img:nth-child(3),
-#slide3:checked ~ #active img:nth-child(4) {
+#slide3:checked ~ #active img:nth-child(4),
+#slide4:checked ~ #active img:nth-child(5),
+#slide5:checked ~ #active img:nth-child(6),
+#slide6:checked ~ #active img:nth-child(7),
+#slide7:checked ~ #active img:nth-child(8) {
 	border-color: #666 !important;
 }
 
