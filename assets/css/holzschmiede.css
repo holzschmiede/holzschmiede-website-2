@@ -221,12 +221,12 @@ footer .content-header {
 }
 
 #slides .inner {
-	width: 700%;
+	width: 1000%;
 	line-height: 0;
 }
 
 #slides article {
-	width: 20%;
+	width: 10%;
 	float: left;
 }
 
