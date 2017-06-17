@@ -11,7 +11,8 @@ const conn = ftp.create({
     user: process.env.FTP_USER,
     password: process.env.FTP_PASSWORD,
     parallel  : 1,
-    log: gutil.log
+    log: gutil.log,
+    debug: console.log.bind(console)
 });
 
 const localBuildDir = './build'
