@@ -12,7 +12,7 @@ const conn = ftp.create({
     password: process.env.FTP_PASSWORD,
     parallel  : 1,
     log: gutil.log,
-    debug: console.log.bind(console)
+    //debug: console.log.bind(console)
 });
 
 const localBuildDir = './build';

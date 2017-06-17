@@ -1,18 +1,24 @@
-const glob = require('glob')
-const path = require('path')
-const Metalsmith = require('metalsmith')
-const layouts = require('metalsmith-layouts')
-const assets = require('metalsmith-assets')
-const markdown = require('metalsmith-markdown')
-const dataMarkdown = require('metalsmith-data-markdown')
-const contentful = require('contentful-metalsmith')
-const htmlMinifier = require('metalsmith-html-minifier')
-const handlebars = require('handlebars')
-const debug = require('metalsmith-debug')
-const sitemap = require('metalsmith-sitemap')
+const glob = require('glob');
+const path = require('path');
+const Metalsmith = require('metalsmith');
+const layouts = require('metalsmith-layouts');
+const assets = require('metalsmith-assets');
+const markdown = require('metalsmith-markdown');
+const dataMarkdown = require('metalsmith-data-markdown');
+const contentful = require('contentful-metalsmith');
+const htmlMinifier = require('metalsmith-html-minifier');
+const handlebars = require('handlebars');
+const debug = require('metalsmith-debug');
+const sitemap = require('metalsmith-sitemap');
 
-const SPACE_ID = process.env.SPACE_ID
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN
+const concat = require('metalsmith-concat');
+const cleanCSS = require('metalsmith-clean-css');
+const fingerprint = require("metalsmith-fingerprint-ignore");
+
+
+
+const SPACE_ID = process.env.SPACE_ID;
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 
 // add custom helpers to handlebars
 glob.sync('helpers/*.js').forEach((fileName) => {
@@ -22,7 +28,7 @@ glob.sync('helpers/*.js').forEach((fileName) => {
     helper,
     require(`./${fileName}`)
   )
-})
+});
 
 //
 // Node in a tree. Used for building the html sitemap of the page from a flat array of file paths.
@@ -30,7 +36,7 @@ glob.sync('helpers/*.js').forEach((fileName) => {
 function Node(id) {
     this.id = id;
     this.children = []; // array
-}
+};
 
 Node.prototype.getChild = function (id) {
     var node;
@@ -53,7 +59,7 @@ function printTree(_tree) {
   } else {
   	return "<li>" + _tree.id + "</li>";
   }
-}
+};
 
 function printTreeWithoutRoot(_tree) {
 	var html = "<ul>";
@@ -61,7 +67,7 @@ function printTreeWithoutRoot(_tree) {
   	html += printTree(subTree);
   });
   return html + "</ul>" 
-}
+};
 
 //
 // Metalsmith config
@@ -110,21 +116,36 @@ Metalsmith(__dirname)
 
     callback();
   })  
-  .use(layouts({
-    engine: 'handlebars',
-    partials: 'partials'
-  }))
   .use(assets({
     source: 'assets/',
     destination: 'assets/'
   }))
+  .use(cleanCSS({
+    files: 'assets/css/holzschmiede.css',
+    cleanCSS: {
+      rebase: false
+    }
+  }))   
+  .use(concat({
+    files: 'assets/css/*.css',
+    output: 'assets/css/holzschmiede.prod.css'
+  }))
+  .use(fingerprint({ 
+    pattern: 'assets/css/holzschmiede.prod.css',
+    keep: true 
+  }))
+  .use(layouts({ // this needs to come after fingerprint, else fingerprint is not present in the metalsmith metadata
+    engine: 'handlebars',
+    partials: 'partials'
+  }))     
   .use(debug())
   .use(markdown())
   .use(dataMarkdown({
     removeAttributeAfterwards: true
   }))
   .use(htmlMinifier({
-    removeRedundantAttributes: false
+    removeRedundantAttributes: false,
+    removeAttributeQuotes: false
   }))
   .use(sitemap({
       "hostname": "https://holzschmiede-hamburg.de"
