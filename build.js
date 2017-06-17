@@ -127,7 +127,7 @@ Metalsmith(__dirname)
     removeRedundantAttributes: false
   }))
   .use(sitemap({
-      "hostname": "http://holzschmiede-hamburg.de"
+      "hostname": "https://holzschmiede-hamburg.de"
   }))
   .build(function (err) {
     if (err) throw err
