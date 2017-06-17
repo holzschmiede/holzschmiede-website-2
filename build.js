@@ -10,7 +10,6 @@ const htmlMinifier = require('metalsmith-html-minifier');
 const handlebars = require('handlebars');
 const debug = require('metalsmith-debug');
 const sitemap = require('metalsmith-sitemap');
-
 const concat = require('metalsmith-concat');
 const cleanCSS = require('metalsmith-clean-css');
 const fingerprint = require("metalsmith-fingerprint-ignore");
