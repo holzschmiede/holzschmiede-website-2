@@ -15,10 +15,10 @@ const conn = ftp.create({
     debug: console.log.bind(console)
 });
 
-const localBuildDir = './build'
-const buildDirGlob = localBuildDir + '/**/*'
+const localBuildDir = './build';
+const buildDirGlob = localBuildDir + '/**/*';
 const remotePath = '/';
-const remoteGlob = remotePath + '**'
+const remoteGlob = remotePath + '**';
 
 //
 // tasks
