@@ -7,8 +7,8 @@ const gutil = require('gulp-util');
 //
 const localBuildDir = './build';
 const buildDirGlob = localBuildDir + '/**/*';
-const remotePath = '/';
-const remoteGlob = remotePath + '**';
+const remotePath = '/holzschmiede';
+const remoteGlob = remotePath + '/**';
 
 //
 // helper
@@ -34,5 +34,6 @@ gulp.task('deploy', function() {
     return gulp.src(buildDirGlob, {base: localBuildDir, buffer: false})
         .pipe(conn.newerOrDifferentSize(remotePath))
         .pipe(conn.dest(remotePath))
-        .pipe(conn.clean(remoteGlob, localBuildDir, {base: "/"}));
+        .pipe(conn.clean(remoteGlob, localBuildDir, {base: remotePath}));
 });
+
