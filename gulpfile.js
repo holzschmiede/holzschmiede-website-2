@@ -7,8 +7,8 @@ const gutil = require('gulp-util');
 //
 const localBuildDir = './build';
 const buildDirGlob = localBuildDir + '/**/*';
-const remotePath = '/holzschmiede';
-const remoteGlob = remotePath + '/**';
+const remotePath = '/holzschmiede/';
+const remoteGlob = remotePath + '**';
 
 //
 // helper
