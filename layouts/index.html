@@ -20,18 +20,15 @@
                 {{#marked data.fields.teaserBody}}{{/marked}}
             </div>
             <div class="row small-up-2 medium-up-3 large-up-4 content push-down">
+            {{#eachData data.fields.teaserProducts}}
                 <div class="column column-block">
-                    <img src="{{data.fields.teaserImages.[0].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC" class="thumbnail" alt="{{data.fields.teaserImages.[0].fields.title}}">
-                </div>
-                <div class="column column-block">
-                    <img src="{{data.fields.teaserImages.[1].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC" class="thumbnail" alt="{{data.fields.teaserImages.[1].fields.title}}">
-                </div>
-                <div class="column column-block">
-                    <img src="{{data.fields.teaserImages.[2].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC" class="thumbnail" alt="{{data.fields.teaserImages.[2].fields.title}}">
-                </div>
-                <div class="column column-block">
-                    <img src="{{data.fields.teaserImages.[3].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC" class="thumbnail hide-for-medium-only" alt="{{data.fields.teaserImages.[3].fields.title}}">
-                </div>
+                    <a href="/produkte/{{ fields.url }}.html" title="{{fields.metaDescription}}">
+                        <img src="{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC" 
+                            class="thumbnail {{#equal index 3}} hide-for-medium-only {{/equal}}" 
+                            alt="{{fields.pictures.[0].fields.title}}" />
+                    </a>
+                </div>                
+            {{/eachData}}
             </div>
             <div class="row column text-center">
                 <a href="produkte.html" class="button hollow secondary large no-margin" title="{{data.fields.teaserButtonText}}">{{data.fields.teaserButtonText}}</a>
