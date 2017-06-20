@@ -24,7 +24,7 @@
                                 <div class="inner">
                                 {{#each data.fields.pictures}}
                                     <article>
-                                        <img src="{{fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC"
+                                        <img src="{{fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC&fl=progressive&q=80"
                                             alt="{{fields.description}}" title="{{fields.description}}" />                                            
                                     </article>
                                 {{/each}}
@@ -37,7 +37,7 @@
                             {{#eachData data.fields.pictures}}
                                 <div class="column push-down">
                                     <label for="slide{{index}}">
-                                        <img class="thumbnail no-margin" src="{{fields.file.url}}?fit=pad&w=125&h=125&fm=jpg&bg=rgb:CCC" 
+                                        <img class="thumbnail no-margin" src="{{fields.file.url}}?fit=pad&w=125&h=125&fm=jpg&bg=rgb:CCC&fl=progressive&q=80" 
                                             alt="{{fields.description}}" title="{{fields.description}}" />
                                     </label>                                        
                                 </div>

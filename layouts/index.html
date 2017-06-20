@@ -23,7 +23,7 @@
             {{#eachData data.fields.teaserProducts}}
                 <div class="column column-block">
                     <a href="/produkte/{{ fields.url }}.html" title="{{fields.metaDescription}}">
-                        <img src="{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC" 
+                        <img src="{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC&fl=progressive&q=80" 
                             class="thumbnail {{#equal index 3}} hide-for-medium-only {{/equal}}" 
                             alt="{{fields.pictures.[0].fields.title}}"
                             title="{{fields.metaDescription}}" />
