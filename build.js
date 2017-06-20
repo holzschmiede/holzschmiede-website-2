@@ -73,6 +73,11 @@ function printTreeWithoutRoot(_tree) {
 //
 
 Metalsmith(__dirname)
+  .metadata({
+    site: {
+      url: "https://holzschmiede-hamburg.de"
+    }
+  })
   .source('src')
   .destination('build')
   .use(contentful({
