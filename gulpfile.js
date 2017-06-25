@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const ftp = require('vinyl-ftp');
 const gutil = require('gulp-util');
+const uncss = require('gulp-uncss');
 
 //
 // variables
@@ -23,6 +24,19 @@ const conn = ftp.create({
 //
 // tasks
 //
+gulp.task('remove-dead-css', function() {
+    return gulp.src([
+        'build/assets/css/*.css'
+    ])
+    .pipe(uncss({
+        html: [
+        'build/*.html',
+        'build/**/*.html'
+        ]
+    }))
+    .pipe(gulp.dest('build/assets/css/'));
+});
+
 gulp.task('upload', function() {
     return gulp.src(buildDirGlob, {base: localBuildDir, buffer: false})
         .pipe(conn.newerOrDifferentSize(remotePath))

@@ -136,7 +136,7 @@ Metalsmith(__dirname)
   }))
   .use(fingerprint({ 
     pattern: 'assets/css/holzschmiede.prod.css',
-    keep: true 
+    keep: false 
   }))
   .use(layouts({ // this needs to come after fingerprint, else fingerprint is not present in the metalsmith metadata
     engine: 'handlebars',
