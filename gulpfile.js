@@ -48,7 +48,8 @@ gulp.task('inline-critical-css', function() {
             base: './build/', 
             inline: true,
             minify: true,
-            height: 900, 
+            height: 900,
+            timeout: 60000, 
             css: ['./build/assets/css/holzschmiede-prod.css']
         }))
         .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
