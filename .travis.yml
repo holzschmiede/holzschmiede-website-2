@@ -11,6 +11,6 @@ install:
   - npm install
 script:
   - npm run start
-  - ./node_modules/gulp/bin/gulp.js remove-dead-css
+  - ./node_modules/gulp/bin/gulp.js optimize
 after_success:
   - ./node_modules/gulp/bin/gulp.js deploy  
