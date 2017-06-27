@@ -12,8 +12,6 @@ const debug = require('metalsmith-debug');
 const sitemap = require('metalsmith-sitemap');
 const concat = require('metalsmith-concat');
 const cleanCSS = require('metalsmith-clean-css');
-const fingerprint = require("metalsmith-fingerprint-ignore");
-
 
 
 const SPACE_ID = process.env.SPACE_ID;
@@ -132,11 +130,7 @@ Metalsmith(__dirname)
   }))   
   .use(concat({
     files: 'assets/css/*.css',
-    output: 'assets/css/holzschmiede.prod.css'
-  }))
-  .use(fingerprint({ 
-    pattern: 'assets/css/holzschmiede.prod.css',
-    keep: false 
+    output: 'assets/css/holzschmiede-prod.css'
   }))
   .use(layouts({ // this needs to come after fingerprint, else fingerprint is not present in the metalsmith metadata
     engine: 'handlebars',

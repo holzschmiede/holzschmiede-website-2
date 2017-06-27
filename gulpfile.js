@@ -2,6 +2,9 @@ const gulp = require('gulp');
 const ftp = require('vinyl-ftp');
 const gutil = require('gulp-util');
 const uncss = require('gulp-uncss');
+const critical = require('critical').stream;
+const fingerpint = require("gulp-md5-plus");
+const runSequence = require('run-sequence');
 
 //
 // variables
@@ -24,19 +27,46 @@ const conn = ftp.create({
 //
 // tasks
 //
+
+// optimization
 gulp.task('remove-dead-css', function() {
     return gulp.src([
-        'build/assets/css/*.css'
-    ])
-    .pipe(uncss({
-        html: [
-        'build/*.html',
-        'build/**/*.html'
-        ]
-    }))
-    .pipe(gulp.dest('build/assets/css/'));
+            'build/assets/css/holzschmiede-prod.css'
+        ])
+        .pipe(uncss({
+            html: [
+            'build/*.html',
+            'build/**/*.html'
+            ]
+        }))
+        .pipe(gulp.dest('build/assets/css/'));
 });
 
+gulp.task('inline-critical-css', function() {
+    return gulp.src('./build/**/*.html')
+        .pipe(critical({
+            base: './build/', 
+            inline: true,
+            minify: true,
+            height: 900, 
+            css: ['./build/assets/css/holzschmiede-prod.css']
+        }))
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+        .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('fingerprint-css', function() {
+    return gulp.src('build/assets/css/holzschmiede-prod.css')
+	    .pipe(fingerpint(0,'build/**/*.html'))
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+	    .pipe(gulp.dest('build/assets/css/'));
+});
+
+gulp.task('optimize', function(callback) {
+    runSequence('remove-dead-css', 'inline-critical-css', 'fingerprint-css', callback);
+});
+
+// deployment
 gulp.task('upload', function() {
     return gulp.src(buildDirGlob, {base: localBuildDir, buffer: false})
         .pipe(conn.newerOrDifferentSize(remotePath))
