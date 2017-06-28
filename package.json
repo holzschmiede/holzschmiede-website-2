@@ -33,17 +33,19 @@
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-sitemap": "^1.2.0",
     "highlight.js": "^9.7.0",
-    "metalsmith-fingerprint-ignore": "^1.1.2"   
+    "metalsmith-fingerprint-ignore": "^1.1.2"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
     "gulp-md5-plus": "^1.0.3",
+    "gulp-replace": "^0.6.1",
     "gulp-uncss": "^1.0.6",
     "gulp-util": "^3.0.8",
     "live-server": "^1.1.0",
     "metalsmith-debug": "^1.1.0",
+    "node-uuid": "^1.4.8",
     "npm-run-all": "^3.0.0",
     "run-sequence": "^1.2.2",
     "vinyl-ftp": "^0.6.0"

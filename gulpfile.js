@@ -5,6 +5,8 @@ const uncss = require('gulp-uncss');
 const critical = require('critical').stream;
 const fingerpint = require("gulp-md5-plus");
 const runSequence = require('run-sequence');
+const gReplace = require('gulp-replace');
+const uuid = require('node-uuid');
 
 //
 // variables
@@ -61,6 +63,31 @@ gulp.task('fingerprint-css', function() {
 	    .pipe(fingerpint(0,'build/**/*.html'))
         .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
 	    .pipe(gulp.dest('build/assets/css/'));
+});
+
+gulp.task('insert-csp-nonce', function() {
+    const styleNonce = uuid.v4();
+    const scriptNonce = uuid.v4();
+
+    const htmlStyleReplacement = '<style nonce="' + styleNonce +  '" type="text/css">';
+    const htmlScriptReplacement = '<script nonce="' + scriptNonce + '">!';
+
+    // feels dirty in case more scripts are added to the site. solution in 'critical' lib would be better.
+    const htmlStyleReplacer = gReplace('<style type="text/css">', htmlStyleReplacement);
+    const htmlScriptReplacer = gReplace('<script>!', htmlScriptReplacement);
+    const htaccessStyleNonceReplacer = gReplace('[RANDOM_FOR_STYLE]', styleNonce);
+    const htaccessScriptNonceReplacer = gReplace('[RANDOM_FOR_SCRIPT]', scriptNonce);
+
+    return gulp.src(['./build/**/*.html', './build/.htaccess'])
+	    .pipe(htmlStyleReplacer)
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+        .pipe(htmlScriptReplacer)
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+        .pipe(htaccessStyleNonceReplacer)
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+        .pipe(htaccessScriptNonceReplacer)
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+	    .pipe(gulp.dest('./build/'));
 });
 
 gulp.task('optimize', function(callback) {
