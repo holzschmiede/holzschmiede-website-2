@@ -105,4 +105,12 @@ gulp.task('remove-dir', function (cb) {
     conn.rmdir(remotePath, cb);
 });
 
-gulp.task('deploy', ['remove-dir', 'upload']);
+gulp.task('upload-htaccess', function (cb) {
+    return gulp.src('./.htaccess', {base: localBuildDir, buffer: false})
+        .pipe(conn.newerOrDifferentSize('/'))
+        .pipe(conn.dest('/'));
+});
+
+gulp.task('deploy', function(callback) {
+    runSequence('remove-dir', 'upload', 'upload-htaccess', callback);
+});
