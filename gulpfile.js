@@ -91,7 +91,7 @@ gulp.task('insert-csp-nonce', function() {
 });
 
 gulp.task('optimize', function(callback) {
-    runSequence('remove-dead-css', 'inline-critical-css', 'fingerprint-css', callback);
+    runSequence('remove-dead-css', 'inline-critical-css', 'fingerprint-css', 'insert-csp-nonce', callback);
 });
 
 // deployment
