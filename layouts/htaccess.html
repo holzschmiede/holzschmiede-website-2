@@ -21,13 +21,7 @@ Deny from env=block_bad_bots
 #
 <IfModule mod_headers.c>
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains;"
-    Header set Content-Security-Policy: "
-        default-src 'none'; 
-        img-src 'self' https://*.contentful.com; 
-        script-src 'self' 'nonce-[RANDOM_FOR_SCRIPT]' 'unsafe-inline'; 
-        style-src 'self' 'nonce-[RANDOM_FOR_STYLE]' 'unsafe-inline'; 
-        object-src 'none'
-    "
+    Header set Content-Security-Policy: "default-src 'none'; img-src 'self' https://*.contentful.com; script-src 'self' 'nonce-[RANDOM_FOR_SCRIPT]' 'nonce-[RANDOM_FOR_SCRIPT_2]' 'unsafe-inline'; style-src 'self' 'nonce-[RANDOM_FOR_STYLE]' 'unsafe-inline'; object-src 'none'"
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "DENY"
     Header set X-XSS-Protection "1; mode=block"

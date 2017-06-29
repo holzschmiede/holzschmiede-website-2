@@ -7,12 +7,12 @@ const fingerpint = require("gulp-md5-plus");
 const runSequence = require('run-sequence');
 const gReplace = require('gulp-replace');
 const uuid = require('node-uuid');
+const cheerio = require('gulp-cheerio');
 
 //
 // variables
 //
 const localBuildDir = './build';
-const buildDirGlob = localBuildDir + '/**/*';
 const remotePath = '/holzschmiede/';
 const remoteGlob = remotePath + '/**/*';
 
@@ -65,6 +65,8 @@ gulp.task('fingerprint-css', function() {
 	    .pipe(gulp.dest('build/assets/css/'));
 });
 
+const scriptNonce2 = uuid.v4();
+
 gulp.task('insert-csp-nonce', function() {
     const styleNonce = uuid.v4();
     const scriptNonce = uuid.v4();
@@ -75,8 +77,10 @@ gulp.task('insert-csp-nonce', function() {
     // feels dirty in case more scripts are added to the site. solution in 'critical' lib would be better.
     const htmlStyleReplacer = gReplace('<style type="text/css">', htmlStyleReplacement);
     const htmlScriptReplacer = gReplace('<script>!', htmlScriptReplacement);
+
     const htaccessStyleNonceReplacer = gReplace('[RANDOM_FOR_STYLE]', styleNonce);
     const htaccessScriptNonceReplacer = gReplace('[RANDOM_FOR_SCRIPT]', scriptNonce);
+    const htaccessScriptNonceReplacer2 = gReplace('[RANDOM_FOR_SCRIPT_2]', scriptNonce2);
 
     return gulp.src(['./build/**/*.html', './build/.htaccess'])
 	    .pipe(htmlStyleReplacer)
@@ -87,16 +91,27 @@ gulp.task('insert-csp-nonce', function() {
         .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
         .pipe(htaccessScriptNonceReplacer)
         .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
-	    .pipe(gulp.dest('./build/'));
+        .pipe(htaccessScriptNonceReplacer2)
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })      
+        .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('insert-csp-nonce-cheerio', function() {
+    return gulp.src(['./build/**/*.html'])     
+        .pipe(cheerio(function ($, file) {
+            $('link[rel="preload"]').attr('nonce', scriptNonce2);
+        }))
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+        .pipe(gulp.dest('./build/'));
 });
 
 gulp.task('optimize', function(callback) {
-    runSequence('remove-dead-css', 'inline-critical-css', 'fingerprint-css', 'insert-csp-nonce', callback);
+    runSequence('remove-dead-css', 'inline-critical-css', 'fingerprint-css', 'insert-csp-nonce', 'insert-csp-nonce-cheerio', callback);
 });
 
 // deployment
 gulp.task('upload', function() {
-    return gulp.src(buildDirGlob, {base: localBuildDir, buffer: false})
+    return gulp.src([localBuildDir + '/**/*', localBuildDir + '/.htaccess'], {base: localBuildDir, buffer: false})
         .pipe(conn.newerOrDifferentSize(remotePath))
         .pipe(conn.dest(remotePath));
 });
