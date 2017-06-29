@@ -111,7 +111,13 @@ gulp.task('optimize', function(callback) {
 
 // deployment
 gulp.task('upload', function() {
-    return gulp.src([localBuildDir + '/**/*', localBuildDir + '/.htaccess'], {base: localBuildDir, buffer: false})
+    return gulp.src([
+            localBuildDir + '/**/*', 
+            localBuildDir + '/.htaccess'
+        ], {
+            base: localBuildDir, 
+            buffer: false
+        })
         .pipe(conn.newerOrDifferentSize(remotePath))
         .pipe(conn.dest(remotePath));
 });
@@ -120,12 +126,6 @@ gulp.task('remove-dir', function (cb) {
     conn.rmdir(remotePath, cb);
 });
 
-gulp.task('upload-htaccess', function (cb) {
-    return gulp.src('./.htaccess', {base: localBuildDir, buffer: false})
-        .pipe(conn.newerOrDifferentSize('/'))
-        .pipe(conn.dest('/'));
-});
-
 gulp.task('deploy', function(callback) {
-    runSequence('remove-dir', 'upload', 'upload-htaccess', callback);
+    runSequence('remove-dir', 'upload', callback);
 });
