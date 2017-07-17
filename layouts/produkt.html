@@ -9,7 +9,7 @@
     <main class="striped-page-sections footer-shadow">
 
         <section class="page-section">
-            <div class="row">
+            <div itemscope itemtype="https://schema.org/IndividualProduct" class="row">
                 <div class="large-6 columns">
 
                     <article id="slider-test">    
@@ -24,7 +24,7 @@
                                 <div class="inner">
                                 {{#each data.fields.pictures}}
                                     <article>
-                                        <img src="{{fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC&fl=progressive&q=80"
+                                        <img itemprop="image" src="{{fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC&fl=progressive&q=80"
                                             alt="{{fields.description}}" title="{{fields.description}}" />                                            
                                     </article>
                                 {{/each}}
@@ -50,8 +50,8 @@
                 </div>
                 <div class="large-5 columns">
                     <div class="row column">
-                        <h2>{{data.fields.name}}</h2>
-                        {{data.fields.description}} 
+                        <h2 itemprop="name">{{data.fields.name}}</h2>
+                        <div itemprop="description">{{data.fields.description}}</div> 
                     </div>
                     <div class="row column">
                         <a href="#" class="button large expanded success">Holen Sie ein Angebot ein</a>
