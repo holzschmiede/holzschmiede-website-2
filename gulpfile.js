@@ -21,6 +21,7 @@ const conn = ftp.create({
     port: process.env.FTP_PORT,
     user: process.env.FTP_USER,
     password: process.env.FTP_PASSWORD,
+    secure: true,
     parallel  : 1,
     log: gutil.log,
     //debug: console.log.bind(console)
