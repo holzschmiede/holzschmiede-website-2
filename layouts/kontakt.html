@@ -28,34 +28,34 @@
 
         <section class="page-section">
             <div class="row column">
-                <form action="#" method="POST">
+                <form action="https://holzschmiede-hamburg.de/kontakt/" method="POST">
                     <div class="row">
                         <div class="medium-6 columns">
-                        <label>Name
-                            <input type="text" placeholder="name">
-                        </label>
+                            <label>Name
+                                <input placeholder="name" name="name" type="text" required>
+                            </label>
                         </div>
                         <div class="medium-6 columns">
-                        <label>Email
-                            <input type="text" placeholder="email">
-                        </label>
+                            <label>Email
+                                <input placeholder="email" name="email" type="text" required>
+                            </label>
                         </div>
                     </div>
                     <div class="row column">
                         <label>Betreff
-                            <input type="text" placeholder="betreff">
+                            <input placeholder="betreff" name="subject" type="text" required>
                         </label>
                     </div>
                     <div class="row column">
-                        <label>
-                        Nachricht
-                        <textarea class="textarea-bigger" placeholder="Schreiben Sie ihre Nachricht hier"></textarea>
+                        <label>Nachricht
+                            <textarea class="textarea-bigger" name="message" placeholder="Schreiben Sie ihre Nachricht hier" required></textarea>
+                            <input type="hidden" name="nicht-ausfuellen" value="">
                         </label>
                     </div>
                     <div class="row column text-right push-down">
-                        <input type="submit" class="button large success no-margin" value="Nachricht absenden">
-                    </div>                                        
-                </form>                 
+                        <input class="button large success no-margin" value="Nachricht absenden" type="submit">
+                    </div>
+                </form>               
             </div>
             </div>
         </section>                    
