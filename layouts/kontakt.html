@@ -3,13 +3,23 @@
     description=data.fields.metaDescription 
     keywords=data.fields.metaKeywords }}
 
-  <!-- 
+    <!-- 
         DER CONTENTBEREICH 
     -->    
-    <main class="striped-page-sections footer-shadow">
+    <main>
+
+        <section class="page-section">
+            <div class="row column text-center">
+                <h1 class="tagline bb">Kontaktieren Sie mich</h1>
+            </div>
+            <div class="row column">
+                <div class="h1-divider"></div>
+            </div>
+        </section>
+
+        
         <section class="page-section">
             <div class="row column">
-                <h2 class="content-header">Kontaktieren Sie mich</h2>
                 <p>{{data.fields.introText}}</p>
                 <p>
                     <span>
@@ -24,41 +34,34 @@
                 <p>             
                     {{data.fields.outroText}}
                 </p>
-        </section> 
+            </div>
+        </section>
 
         <section class="page-section">
-            <div class="row column">
                 <form action="https://holzschmiede-hamburg.de/kontakt/" method="POST">
                     <div class="row">
                         <div class="medium-6 columns">
-                            <label>Name
-                                <input placeholder="name" name="name" type="text" required>
-                            </label>
+                            <label>Name <input placeholder="name" name="name" required="" type="text"></label>
                         </div>
                         <div class="medium-6 columns">
-                            <label>Email
-                                <input placeholder="email" name="email" type="text" required>
-                            </label>
+                            <label>Email <input placeholder="email" name="email" required="" type="text"></label>
                         </div>
                     </div>
                     <div class="row column">
-                        <label>Betreff
-                            <input placeholder="betreff" name="subject" type="text" required>
-                        </label>
+                        <label>Betreff <input placeholder="betreff" name="subject" required="" type="text"></label>
                     </div>
                     <div class="row column">
                         <label>Nachricht
-                            <textarea class="textarea-bigger" name="message" placeholder="Schreiben Sie ihre Nachricht hier" required></textarea>
-                            <input type="hidden" name="nicht-ausfuellen" value="">
+                            <textarea class="textarea-bigger" name="message" placeholder="Schreiben Sie ihre Nachricht hier" required=""></textarea>
+                            <input aria-hidden="true" name="nicht-ausfuellen" type="hidden">
                         </label>
                     </div>
                     <div class="row column text-right push-down">
-                        <input class="button large success no-margin" value="Nachricht absenden" type="submit">
+                        <input class="button large warning contact-button" value="Nachricht absenden" type="submit">
                     </div>
-                </form>               
-            </div>
-            </div>
-        </section>                    
+                </form>
+        </section>
+
     </main>
 
 {{> footer}}

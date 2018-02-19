@@ -4,65 +4,36 @@
     keywords=data.fields.metaKeywords }}
 
     <!-- 
-        DER CONTENTBEREICH 
+        DER CONTENTBEREICH
     -->    
-    <main class="striped-page-sections footer-shadow">
-
+    <main itemscope itemtype="https://schema.org/IndividualProduct">  
+              
         <section class="page-section">
-            <div itemscope itemtype="https://schema.org/IndividualProduct" class="row">
-                <div class="large-6 columns">
-
-                    <article id="slider-test">    
-                        <!-- Slider Setup -->                   
-                    {{#eachData data.fields.pictures}}
-                        <input {{#equal index 0}} checked {{/equal}} name="slider" id="slide{{index}}" type="radio">
-                    {{/eachData}}  
-
-                        <!-- The Slider -->
-                        <div id="slides" class="thumbnail">
-                            <div id="overflow">
-                                <div class="inner">
-                                {{#each data.fields.pictures}}
-                                    <article>
-                                        <img itemprop="image" src="{{fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC&fl=progressive&q=80"
-                                            alt="{{fields.description}}" title="{{fields.description}}" />                                            
-                                    </article>
-                                {{/each}}
-                                </div> <!-- .inner -->
-                            </div> <!-- #overflow -->
-                        </div> <!-- #slides -->
-
-                        <div id="active">
-                            <div class="row small-up-4 medium-up-8 large-up-4 content">
-                            {{#eachData data.fields.pictures}}
-                                <div class="column push-down">
-                                    <label for="slide{{index}}">
-                                        <img class="thumbnail no-margin" src="{{fields.file.url}}?fit=pad&w=125&h=125&fm=jpg&bg=rgb:CCC&fl=progressive&q=80" 
-                                            alt="{{fields.description}}" title="{{fields.description}}" />
-                                    </label>                                        
-                                </div>
-                            {{/eachData}}  
-                            </div>
-                        </div> <!-- #active -->                                     
-    
-                    </article>
-
-                </div>
-                <div class="large-5 columns">
-                    <div class="row column">
-                        <h2 itemprop="name">{{data.fields.name}}</h2>
-                        <div itemprop="description">{{data.fields.description}}</div> 
-                    </div>
-                    <div class="row column">
-                        <a href="#" class="button large expanded success">Holen Sie ein Angebot ein</a>
-                    </div>                                       
-                    <div class="row column">
-                        <a href="/produkte.html" class="button hollow large expanded secondary">Zurück zur Übersicht</a>
-                    </div>
-                </div>
+            <div class="row column text-center">
+                <h1 itemprop="name" class="tagline bb">{{data.fields.name}}</h1>
             </div>
-        </section> 
-                    
+            <div class="row column">
+                <div class="h1-divider"></div>
+            </div>            
+            <div class="row column">
+                <p itemprop="description">{{data.fields.description}}</p>
+            </div>                    
+            <div class="row medium-up-2 push-down featured">
+                {{#each data.fields.pictures}}
+                    <div class="column column-block">
+                        <article>
+                            <img itemprop="image" src="{{fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC&fl=progressive&q=80"
+                                alt="{{fields.description}}" title="{{fields.description}}" class="thumbnail" />                                            
+                        </article>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="row column text-center">
+                    <a href="/wohnskulpturen.html" class="button warning large products-button" title="Zurück zur Übersicht über alle Wohnskulpturen">Zurück zur Übersicht</a>
+            </div>                
+        </section>
+
     </main>
 
 {{> footer }}
+

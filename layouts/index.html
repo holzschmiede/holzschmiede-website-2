@@ -2,54 +2,60 @@
     title=data.fields.title 
     description=data.fields.metaDescription 
     keywords=data.fields.metaKeywords }}
+            <!-- 
+                DER CONTENTBEREICH 
+            -->    
+            <main>
+    
+                <section class="page-section">
+                    <div class="row column text-center">
+                        <h1 class="tagline">{{data.fields.title}}</h1>
+                    </div>
+                </section>
 
-    <!-- 
-        DER CONTENTBEREICH 
-    -->    
-    <main class="striped-page-sections footer-shadow">
-        <section class="page-section">
-            <div class="row column">
-                <h2 class="content-header text-center">{{data.fields.title}}</h2>
-                {{#marked data.fields.introBody}}{{/marked}}                 
-            </div>
-        </section>
+                
+                <section class="page-section">
+                    <div class="row column">
+                            <h2 class="line-heading">{{data.fields.teaserHeading}}</h2>
+                    </div>
+                    <div class="row column">
+                            {{#marked data.fields.teaserBody}}{{/marked}}
+                    </div>                    
+                    <div class="row small-up-2 medium-up-3 large-up-4 featured">
+                        {{#eachData data.fields.teaserProducts}}
+                            <div class="column column-block">
+                                <a href="/wohnskulpturen/{{ fields.url }}.html" title="{{fields.metaDescription}}">
+                                    <img src="{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC&fl=progressive&q=80" 
+                                        class="thumbnail {{#equal index 3}} hide-for-medium-only {{/equal}}" 
+                                        alt="{{fields.pictures.[0].fields.title}}"
+                                        title="{{fields.metaDescription}}" />
+                                </a>
+                            </div>                
+                        {{/eachData}}
+                    </div>
+                    <div class="row column text-center">
+                        <a href="/wohnskulpturen.html" class="button warning large products-button" title="{{data.fields.teaserButtonText}}">{{data.fields.teaserButtonText}}</a>
+                    </div>
+                </section>
 
-        <section class="page-section">
-            <div class="row column">
-                <h2 class="content-header text-center">{{data.fields.teaserHeading}}</h2>
-                {{#marked data.fields.teaserBody}}{{/marked}}
-            </div>
-            <div class="row small-up-2 medium-up-3 large-up-4 content push-down">
-            {{#eachData data.fields.teaserProducts}}
-                <div class="column column-block">
-                    <a href="/produkte/{{ fields.url }}.html" title="{{fields.metaDescription}}">
-                        <img src="{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&bg=rgb:CCC&fl=progressive&q=80" 
-                            class="thumbnail {{#equal index 3}} hide-for-medium-only {{/equal}}" 
-                            alt="{{fields.pictures.[0].fields.title}}"
-                            title="{{fields.metaDescription}}" />
-                    </a>
-                </div>                
-            {{/eachData}}
-            </div>
-            <div class="row column text-center">
-                <a href="produkte.html" class="button hollow secondary large no-margin" title="{{data.fields.teaserButtonText}}">{{data.fields.teaserButtonText}}</a>
-            </div>
-        </section>
+                <section class="page-section">
+                    <div class="row column">
+                        <h2 class="line-heading">Die Holzschmiede Hamburg</h2>
+                    </div>
+                    <div class="row column">
+                        {{#marked data.fields.introBody}}{{/marked}}  
+                    </div>                   
+                </section>
 
-        <section class="page-section">
-            <div class="row column">
-                <h2 class="content-header text-center">{{data.fields.extraHeading}}</h2>
-                {{#marked data.fields.extraBody}}{{/marked}}                 
-            </div>
-        </section>
+                <section class="page-section">
+                    <div class="row column">
+                        <h2 class="line-heading">{{data.fields.extraHeading}} <span class="hide-for-small-only">Hamburg</span></h2>
+                    </div>
+                    <div class="row column">
+                        {{#marked data.fields.extraBody}}{{/marked}}    
+                    </div>                   
+                </section>
 
-        <section class="page-section">
-            <div class="row column content text-center">
-                <h2 class="content-header">{{data.fields.ctaHeading}}</h2>
-                <p class="no-margin"><a href="kontakt.html" class="button large success no-margin" title="Kontaktieren Sie die Holzschmiede Hamburg">{{data.fields.ctaButtonText}}</a></p>
-            </div>
-        </section>
-
-    </main>
+            </main>
 
 {{> footer }}

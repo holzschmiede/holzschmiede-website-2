@@ -1,0 +1,37 @@
+{{> header 
+    title="Alle Wohnskulpturen in einer Übersicht"
+    description="Dies ist eine Übersicht über alle unsere Wohnskulpturen. Stühle, Tische, Lampen, Kleiderständer und mehr. "
+    keywords="skulptur, wohnskulptur, übersicht, stühle, tische, schalen, lampen, kleiderständer, holz" }}
+
+    <!-- 
+    DER CONTENTBEREICH 
+    -->    
+    <main>
+
+        <section class="page-section">
+            <div class="row column text-center">
+                <h1 class="tagline bb">Alle Wohnskulpturen in einer Übersicht</h1>
+            </div>
+            <div class="row column">
+                <div class="h1-divider"></div>
+            </div>
+        </section>
+        
+        <section class="page-section">
+            <div class="row small-up-2 medium-up-3 large-up-4 featured">
+                {{#each data.entries}}
+                    <div class="column column-block">
+                        <a href="{{ _fileName }}">
+                            <img src="{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&fm=jpg&bg=rgb:CCC&fl=progressive&q=80" 
+                                class="thumbnail" alt="{{fields.description}}" title="{{fields.description}}" />
+                        </a>
+                    </div>                    
+                {{/each}}                               
+            </div>                  
+        </section>
+
+    </main>
+
+{{> footer }}
+
+

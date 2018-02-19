@@ -3,42 +3,58 @@
     description=data.fields.metaDescription 
     keywords=data.fields.metaKeywords }}
 
-<!-- 
+    <!-- 
         DER CONTENTBEREICH 
     -->    
-    <main class="striped-page-sections footer-shadow {{slug}}">
+    <main>
+
         <section class="page-section">
-            <div class="row column">
-                <h2 class="content-header text-center">Impressum</h2>
-                <h3 id="angaben-gem-5-tmg-">Angaben gemäß § 5 TMG:</h3>
-                    <p>
-                        {{common.companyInfo.items.[0].fields.owner}} <br>
-                        {{common.companyInfo.items.[0].fields.name}} <br>
-                        {{common.companyInfo.items.[0].fields.street}} <br>
-                        {{common.companyInfo.items.[0].fields.postalCode}} {{common.companyInfo.items.[0].fields.city}}
-                    </p>
-                    <h3 id="kontakt-">Kontakt:</h3>
-                    <p>
-                        Telefon: {{common.companyInfo.items.[0].fields.phone}} <br>
-                        Email: {{common.companyInfo.items.[0].fields.email}}
-                    </p>
-                    <h3 id="umsatzsteuer-id-">Umsatzsteuer-ID:</h3>
-                    <p>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz: {{common.companyInfo.items.[0].fields.taxIdentNumber}}</p>          
+            <div class="row column text-center">
+                <h1 class="tagline bb">Impressum</h1>
             </div>
-        </section> 
-        <section class="page-section">
             <div class="row column">
-                <h2 class="content-header text-center">Haftungsausschluss</h2>
-                {{#marked data.fields.disclaimerText}}{{/marked}}                 
+                <div class=" h1-divider"></div>
             </div>
         </section>
+
+        
         <section class="page-section">
             <div class="row column">
-                <h2 class="content-header text-center">Datenschutz</h2>
-                {{#marked data.fields.datenschutzText}}{{/marked}}                 
+                <h3>Angaben gemäß § 5 TMG:</h3>
+                <p>
+                    {{common.companyInfo.items.[0].fields.owner}} <br>
+                    {{common.companyInfo.items.[0].fields.name}} <br>
+                    {{common.companyInfo.items.[0].fields.street}} <br>
+                    {{common.companyInfo.items.[0].fields.postalCode}} {{common.companyInfo.items.[0].fields.city}}
+                </p>
+                <h3>Kontakt:</h3>
+                <p>
+                    Telefon: {{common.companyInfo.items.[0].fields.phone}} <br>
+                    Email: {{common.companyInfo.items.[0].fields.email}}
+                </p>
+                <h3>Umsatzsteuer-ID:</h3>
+                <p>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz: {{common.companyInfo.items.[0].fields.taxIdentNumber}}</p>
+            </div>                        
+        </section>
+
+        <section class="page-section">
+            <div class="row column">
+                <div class="line-heading"><h2>Haftungsausschluss</h2></div>
             </div>
-        </section>                  
+            <div class="row column">
+                {{#marked data.fields.disclaimerText}}{{/marked}}  
+            </div>                  
+        </section>
+
+        <section class="page-section">
+            <div class="row column">
+                <div class="line-heading"><h2>Datenschutz</h2></div>
+            </div>
+            <div class="row column">
+                {{#marked data.fields.datenschutzText}}{{/marked}} 
+            </div>                  
+        </section>
+
     </main>
 
 {{> footer }}
-

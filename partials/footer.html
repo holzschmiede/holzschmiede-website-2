@@ -1,28 +1,41 @@
-        <!-- 
-            DER FUSSBEREICH 
 
-            replace with data pulled from contentful
-        -->
-        <footer class="footer">
-            <div class="row text-center">
-                <div class="columns small-12 medium-4">
-                    <h3 class="content-header">Adresse</h3>
-                    <p>{{common.companyInfo.items.[0].fields.name}}</p>
-                    <p>Inh. {{common.companyInfo.items.[0].fields.owner}} ({{common.companyInfo.items.[0].fields.ownerJobTitle}})<br>
-                    {{common.companyInfo.items.[0].fields.street}} <br>
-                    {{common.companyInfo.items.[0].fields.postalCode}} {{common.companyInfo.items.[0].fields.city}}</p>
-                </div>
-                <div class="columns small-12 medium-4 linklist">
-                    <h3 class="content-header">Kontakt</h3>
-                    <p><a href="mailto:{{ common.companyInfo.items.[0].fields.email }}" title="Email">{{common.companyInfo.items.[0].fields.email}}</a></p>
-                    <p><a href="Tel:{{ common.companyInfo.items.[0].fields.phone }}" title="Telefon">{{common.companyInfo.items.[0].fields.phone}}</a></p>
-                </div>
-                <div class="columns small-12 medium-4 linklist">
-                    <h3 class="content-header">Links</h3>
-                    <p><a href="/impressum.html" title="Impressum">Impressum</a></p>
-                    <p><a href="/sitemap.html" title="Sitemap">Sitemap</a></p>
-                </div>                                
-            </div> 
-        </footer>
+           <!-- 
+                DER FUSSBEREICH 
+    
+                replace with data pulled from contentful
+            -->
+            <div class="footer-info">
+                <section class="row text-center">
+                    <div class="columns small-12 medium-4">
+                        <h3>Adresse</h3>
+                        <p>{{common.companyInfo.items.[0].fields.name}}</p>
+                        <p>Inh. {{common.companyInfo.items.[0].fields.owner}} ({{common.companyInfo.items.[0].fields.ownerJobTitle}})<br>
+                        {{common.companyInfo.items.[0].fields.street}} <br>
+                        {{common.companyInfo.items.[0].fields.postalCode}} {{common.companyInfo.items.[0].fields.city}}</p>
+                    </div>
+                    <div class="columns small-12 medium-4">
+                        <h3>Kontakt</h3>
+                        <p><a href="mailto:{{ common.companyInfo.items.[0].fields.email }}" title="Schreiben Sie der Holzschmiede Hamburg eine Email">{{common.companyInfo.items.[0].fields.email}}</a></p>
+                        <p><a href="Tel:{{ common.companyInfo.items.[0].fields.phone }}" title="Rufen Sie die Holzschmiede Hamburg per Telefon an">{{common.companyInfo.items.[0].fields.phone}}</a></p>
+                    </div>
+                    <div class="columns small-12 medium-4">
+                        <h3>Links</h3>
+                        <p>
+                            <a href="/impressum.html" title="Impressum">Impressum</a>
+                        </p>
+                        <p>
+                            <a href="/kontakt.html" title="Konkatktieren Sie die Holzschmiede Hamburg">Kontaktformular</a>
+                        </p>
+                    </div>                     
+                </section>
+            </div>
+            <div class="footer-divider"></div>
+            <footer class="footer" role="contentinfo">
+                <section class="row column text-center">
+                    <p>Hamburger Wohnskulpturen seit 2010</p>
+                </section> 
+            </footer>
+
+        </div>
     </body>
 </html>

@@ -15,13 +15,12 @@ ServerSignature Off
 SetEnvIfNoCase User-Agent "^libwww-perl*" block_bad_bots
 Deny from env=block_bad_bots
 
-
 #
-# important security headers
+# important security headers (removed nonce's for now because of errors with chrome the new IE...)
 #
 <IfModule mod_headers.c>
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains;"
-    Header set Content-Security-Policy: "default-src 'none'; img-src 'self' https://*.contentful.com; script-src 'self' 'nonce-[RANDOM_FOR_SCRIPT]' 'nonce-[RANDOM_FOR_SCRIPT_2]' 'unsafe-inline'; style-src 'self' 'nonce-[RANDOM_FOR_STYLE]' 'unsafe-inline'; object-src 'none'"
+    Header set Content-Security-Policy: "default-src 'none'; img-src 'self' https://*.contentful.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'"
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "DENY"
     Header set X-XSS-Protection "1; mode=block"
@@ -64,6 +63,16 @@ Deny from env=block_bad_bots
     #
     RewriteCond %{REQUEST_URI} !^/holzschmiede/
     RewriteRule ^(.*)$ /holzschmiede/$1
+
+    #
+    # custom 404 page
+    #
+    ErrorDocument 404 /404.html
+
+    #
+    # redirect produkte directory to wohnskulpturen
+    #
+    RewriteRule ^produkte/(.*)$ /wohnskulpturen/$1 [R=302,NC,L]
 
     #
     # redirect all google search results to the new page so no page ranking is lost

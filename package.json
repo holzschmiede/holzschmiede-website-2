@@ -44,6 +44,7 @@
     "gulp-replace": "^0.6.1",
     "gulp-uncss": "^1.0.6",
     "gulp-util": "^3.0.8",
+    "gulp.spritesmith": "^6.9.0",
     "install": "^0.10.1",
     "live-server": "^1.1.0",
     "metalsmith-debug": "^1.1.0",
