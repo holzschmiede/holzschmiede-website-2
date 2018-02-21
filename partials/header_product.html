@@ -24,21 +24,22 @@
 
         <!-- using twitter cards together with open graph which twitter cards use under the hood and fall back to -->
         <!-- If an og:type, og:title and og:description exist in the markup but twitter:card is absent, then a summary card may be rendered. -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:site" content="@holzschmiede">
-        <meta name="twitter:title" content="Parade of Fans for Houston’s Funeral">
-        <meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here.">
-        <meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="{{ image }}" />  
+        <meta name="twitter:image:alt" content="{{ image_alt }}" />      
         <!-- required open graph properties -->
-        <meta property="og:url" content="https://holzschmiede-hamburg.de" />
-        <meta property="og:title" content="Handgefertigte Naturholz-Wohnskulpturen aus Hamburg | Holzschmiede Hamburg" />
-        <meta property="og:type"   content="product" /> <!-- https://developers.facebook.com/docs/reference/opengraph/object-type/product/?_fb_noscript=1 -->
-        <meta property="og:image" content="image for holzschmiede which users see when shared on fd - TODO: check if og:image:secure_url is always required with ssl
-            If the page specifies an og:image it should specify og:image:alt" />           
+        <meta property="og:url" content="{{ common.companyInfo.items.[0].fields.website }}" />
+        <meta property="og:title" content="{{ title }} | {{ common.companyInfo.items.[0].fields.name }}" />
+        <meta property="og:type" content="product" />
+        <!-- use the same picture for both image tags since the site is only available over ssl anyway -->
+        <meta property="og:image" content="{{ image }}" /> 
+        <meta property="og:image:secure_url" content="{{ image }}" />
+        <meta property="og:image:alt" content="{{ image_alt }}" />          
         <!-- optional open graph properties -->
-        <meta property="og:description" content="Sean Connery found fame and fortune as the suave, sophisticated British agent, James Bond." />
+        <meta property="og:description" content="{{ description }}" />
         <meta property="og:locale" content="de_DE" />
-        <meta property="og:site_name" content="Holzschmiede Hamburg" />
+        <meta property="og:site_name" content="{{common.companyInfo.items.[0].fields.name}}" />
+
 
         <!-- <meta name="google-site-verification" content="ADYYP5KNRwgg8_fz8myOr7qxWeUKc2mI_csyzUDMBd4" /> -->
         <!-- <link rel="stylesheet" href="assets/css/holzschmiede.prod.css"> -->

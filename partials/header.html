@@ -25,18 +25,17 @@
         <!-- using twitter cards together with open graph which twitter cards use under the hood and fall back to -->
         <!-- If an og:type, og:title and og:description exist in the markup but twitter:card is absent, then a summary card may be rendered. -->
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="the title of the summary" />
-        <meta name="twitter:site" content="@holzschmiede" />
         <!-- required open graph properties -->
-        <meta property="og:url" content="https://holzschmiede-hamburg.de" />
+        <meta property="og:url" content="{{ common.companyInfo.items.[0].fields.website }}" />
         <meta property="og:title" content="{{ title }} | {{ common.companyInfo.items.[0].fields.name }}" />
-        <meta property="og:type" content="website" /> <!-- meta property="og:type"   content="product"  https://developers.facebook.com/docs/reference/opengraph/object-type/product/?_fb_noscript=1 -->
-        <meta property="og:image" content="image for holzschmiede which users see when shared on fd - TODO: check if og:image:secure_url is always required with ssl
-            If the page specifies an og:image it should specify og:image:alt" />           
+        <meta property="og:type" content="website" /> 
+        <meta property="og:image" content="{{ common.companyInfo.items.[0].fields.website }}/assets/favicon/android-chrome-512x512.png" /> 
+        <meta property="og:image:secure_url" content="{{ common.companyInfo.items.[0].fields.website }}/assets/favicon/android-chrome-512x512.png" />
+        <meta property="og:image:alt" content="{{common.companyInfo.items.[0].fields.name}}" />          
         <!-- optional open graph properties -->
         <meta property="og:description" content="{{ description }}" />
         <meta property="og:locale" content="de_DE" />
-        <meta property="og:site_name" content="Holzschmiede Hamburg" />
+        <meta property="og:site_name" content="{{common.companyInfo.items.[0].fields.name}}" />
 
         <!-- <meta name="google-site-verification" content="ADYYP5KNRwgg8_fz8myOr7qxWeUKc2mI_csyzUDMBd4" /> -->
         <!-- <link rel="stylesheet" href="assets/css/holzschmiede.prod.css"> -->

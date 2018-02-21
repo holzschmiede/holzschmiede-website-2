@@ -1,13 +1,15 @@
-{{> header 
+{{> header_product 
     title=data.fields.name
     description=data.fields.metaDescription
-    keywords=data.fields.metaKeywords }}
+    keywords=data.fields.metaKeywords 
+    image=(concat "https:" data.fields.pictures.[0].fields.file.url "?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC&fl=progressive&q=80")
+    image_alt=data.fields.pictures.[0].fields.description }}
 
     <!-- 
         DER CONTENTBEREICH
     -->    
     <main itemscope itemtype="https://schema.org/IndividualProduct">  
-              
+        
         <section class="page-section">
             <div class="row column text-center">
                 <h1 itemprop="name" class="tagline bb">{{data.fields.name}}</h1>
