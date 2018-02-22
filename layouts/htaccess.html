@@ -75,6 +75,8 @@ Deny from env=block_bad_bots
     #
     RewriteRule ^produkte/(.*)$ /wohnskulpturen/$1 [R=302,NC,L]
 
+    Redirect 301 /produkte.html /wohnskulpturen.html
+
     #
     # redirect all google search results to the new page so no page ranking is lost
     #
