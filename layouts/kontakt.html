@@ -1,16 +1,17 @@
 {{> header 
     title=data.fields.title 
     description=data.fields.metaDescription 
-    keywords=data.fields.metaKeywords }}
+    keywords=data.fields.metaKeywords
+    schemaOrgPageType="ContactPage" }}
 
     <!-- 
         DER CONTENTBEREICH 
     -->    
-    <main>
+    <main role="main" itemscope itemprop="mainContentOfPage">
 
-        <section class="page-section">
+        <section class="page-section" itemscope itemtype="http://schema.org/WPHeader">
             <div class="row column text-center">
-                <h1 class="tagline bb">Kontaktieren Sie mich</h1>
+                <h1 class="tagline bb" itemprop="headline">Kontaktieren Sie mich</h1>
             </div>
             <div class="row column">
                 <div class="h1-divider"></div>
@@ -41,18 +42,18 @@
                 <form action="https://holzschmiede-hamburg.de/kontakt/" method="POST">
                     <div class="row">
                         <div class="medium-6 columns">
-                            <label>Name <input placeholder="name" name="name" required="" type="text"></label>
+                            <label>Name <input placeholder="name" name="name" required="" aria-required="true" type="text"></label>
                         </div>
                         <div class="medium-6 columns">
-                            <label>Email <input placeholder="email" name="email" required="" type="text"></label>
+                            <label>Email <input placeholder="email" name="email" required="" aria-required="true" type="text"></label>
                         </div>
                     </div>
                     <div class="row column">
-                        <label>Betreff <input placeholder="betreff" name="subject" required="" type="text"></label>
+                        <label>Betreff <input placeholder="betreff" name="subject" required="" aria-required="true" type="text"></label>
                     </div>
                     <div class="row column">
                         <label>Nachricht
-                            <textarea class="textarea-bigger" name="message" placeholder="Schreiben Sie ihre Nachricht hier" required=""></textarea>
+                            <textarea class="textarea-bigger" name="message" placeholder="Schreiben Sie ihre Nachricht hier" required="" aria-required="true"></textarea>
                             <input aria-hidden="true" name="nicht-ausfuellen" type="hidden">
                         </label>
                     </div>

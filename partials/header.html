@@ -9,6 +9,9 @@
         <meta name="description" content="{{ description }}">
         <meta name="keywords" content="{{ keywords }}">
 
+        {{#if noIndex}}
+            <meta name="robots" content="noindex,follow" />
+        {{/if}}
 
         <!-- favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -43,12 +46,12 @@
     </head>
 
 
-    <body>
+    <body itemscope itemtype="https://schema.org/{{orElse schemaOrgPageType 'WebPage'}}">
         <div class="swrapper">
             <!-- 
                 DER HEADER 
             -->    
-            <header role="banner">
+            <header role="banner" itemscope itemtype="http://schema.org/WPHeader">
                 <div id="logo">
                     <a href="/index.html" title="Die Startseite der Holzschmiede Hamburg aufrufen">
                         <img src="/assets/images/logo.png" alt="Holzschmiede Hamburg" title="Holzschmiede Hamburg">
@@ -60,21 +63,21 @@
             <!--
                 DIE Navigation
             -->
-            <nav>
+            <nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
                 <ul>
                     <li>
-                        <a href="/index.html" {{#isActive slug 'index' }}{{/isActive}} title="Die Startseite der Holzschmiede Hamburg aufrufen"> 
-                            Startseite
+                        <a itemprop="url" href="/index.html" {{#isActive slug 'index' }}{{/isActive}} title="Die Startseite der Holzschmiede Hamburg aufrufen"> 
+                            <span itemprop="name">Startseite</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/wohnskulpturen.html" {{#isActive slug 'wohnskulpturen' }}{{/isActive}} title="Eine Übersicht über alle Wohnskulpturen der Holzschmiede Hamburg aufrufen">
-                            Skulpturen
+                        <a itemprop="url" href="/wohnskulpturen.html" {{#isActive slug 'wohnskulpturen' }}{{/isActive}} title="Eine Übersicht über alle Wohnskulpturen der Holzschmiede Hamburg aufrufen">
+                            <span itemprop="name">Skulpturen</span>
                         </a>    
                     </li>
                     <li>
-                        <a href="/kontakt.html" {{#isActive slug 'kontakt' }}{{/isActive}} title="Kontaktieren Sie die Holzschmiede Hamburg">
-                            Kontakt
+                        <a itemprop="url" href="/kontakt.html" {{#isActive slug 'kontakt' }}{{/isActive}} title="Kontaktieren Sie die Holzschmiede Hamburg">
+                            <span itemprop="name">Kontakt</span>
                         </a>
                     </li>
                 </ul>

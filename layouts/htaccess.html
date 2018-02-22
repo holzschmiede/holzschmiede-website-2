@@ -16,13 +16,14 @@ SetEnvIfNoCase User-Agent "^libwww-perl*" block_bad_bots
 Deny from env=block_bad_bots
 
 #
-# important security headers (removed nonce's for now because of errors with chrome the new IE...)
+# important security headers (removed nonce's for now because of errors with chrome... the new IE...)
+#
+# removed Header set X-Frame-Options "DENY" temporarily to see if page views goes up
 #
 <IfModule mod_headers.c>
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains;"
     Header set Content-Security-Policy: "default-src 'none'; img-src 'self' https://*.contentful.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'"
     Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "DENY"
     Header set X-XSS-Protection "1; mode=block"
     Header set Referrer-Policy "same-origin"
 </IfModule>
