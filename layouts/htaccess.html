@@ -18,14 +18,13 @@ Deny from env=block_bad_bots
 #
 # important security headers (removed nonce's for now because of errors with chrome... the new IE...)
 #
-# removed Header set X-Frame-Options "DENY" temporarily to see if page views goes up
+# removed Header set X-Frame-Options "DENY" and Header set Referrer-Policy "same-origin" temporarily to see if page views goes up
 #
 <IfModule mod_headers.c>
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains;"
     Header set Content-Security-Policy: "default-src 'none'; img-src 'self' https://*.contentful.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'"
     Header set X-Content-Type-Options "nosniff"
     Header set X-XSS-Protection "1; mode=block"
-    Header set Referrer-Policy "same-origin"
 </IfModule>
 
 #
@@ -73,58 +72,58 @@ Deny from env=block_bad_bots
     #
     # redirect produkte directory to wohnskulpturen
     #
-    RewriteRule ^produkte/(.*)$ /wohnskulpturen/$1 [R=302,NC,L]
+    RewriteRule ^produkte/(.*)$ /wohnskulpturen/$1 [R=301,NC,L]
 
     #
     # redirect all google search results to the new page so no page ranking is lost
     #
     Redirect 301 /produkte.html                                 https://holzschmiede-hamburg.de/wohnskulpturen.html
-    Redirect 301 /HH/Schwingstuhl.html                          https://holzschmiede-hamburg.de/produkte/schwingstuhl.html
-    Redirect 301 /HH/Wrestler.html                              https://holzschmiede-hamburg.de/produkte/die-wrestler.html
-    Redirect 301 /HH/Dreirat.html                               https://holzschmiede-hamburg.de/produkte/dreirat.html
+    Redirect 301 /HH/Schwingstuhl.html                          https://holzschmiede-hamburg.de/wohnskulpturen/schwingstuhl.html
+    Redirect 301 /HH/Wrestler.html                              https://holzschmiede-hamburg.de/wohnskulpturen/die-wrestler.html
+    Redirect 301 /HH/Dreirat.html                               https://holzschmiede-hamburg.de/wohnskulpturen/dreirat.html
     Redirect 301 /HH/Willkommen.html                            https://holzschmiede-hamburg.de
     Redirect 301 /firma.html                                    https://holzschmiede-hamburg.de
-    Redirect 301 /HH/Mooreiche.html                             https://holzschmiede-hamburg.de/produkte/mooreiche.html
-    Redirect 301 /HH/Lampen.html                                https://holzschmiede-hamburg.de/produkte/lampen.html
-    Redirect 301 /HH/Bauchtanz.html                             https://holzschmiede-hamburg.de/produkte/der-bauchtanz.html
-    Redirect 301 /HH/Nusstopf.html                              https://holzschmiede-hamburg.de/produkte/nusstopf.html
-    Redirect 301 /HH/Puzzletisch.html                           https://holzschmiede-hamburg.de/produkte/puzzletisch.html
-    Redirect 301 /HH/Tanz_der_Weiden.html                       https://holzschmiede-hamburg.de/produkte/tanz-der-weiden.html
-    Redirect 301 /HH/Sitzschwebe.html                           https://holzschmiede-hamburg.de/produkte/liegeschwebe.html
-    Redirect 301 /HH/Schaukelstuhl.html                         https://holzschmiede-hamburg.de/produkte/schaukelstuhl.html
-    Redirect 301 /HH/Linduo.html                                https://holzschmiede-hamburg.de/produkte/linduo.html
-    Redirect 301 /HH/Rundtisch.html                             https://holzschmiede-hamburg.de/produkte/rundtische.html
-    Redirect 301 /HH/Garderobenstander.html                     https://holzschmiede-hamburg.de/produkte/garderobenstaender.html
-    Redirect 301 /HH/Gemeinsam.html                             https://holzschmiede-hamburg.de/produkte/gemeinsam.html
-    Redirect 301 /HH/Vielseiter.html                            https://holzschmiede-hamburg.de/produkte/vielseiter.html
-    Redirect 301 /HH/Birkenfu.html                              https://holzschmiede-hamburg.de/produkte/birkenfuss.html
+    Redirect 301 /HH/Mooreiche.html                             https://holzschmiede-hamburg.de/wohnskulpturen/mooreiche.html
+    Redirect 301 /HH/Lampen.html                                https://holzschmiede-hamburg.de/wohnskulpturen/lampen.html
+    Redirect 301 /HH/Bauchtanz.html                             https://holzschmiede-hamburg.de/wohnskulpturen/der-bauchtanz.html
+    Redirect 301 /HH/Nusstopf.html                              https://holzschmiede-hamburg.de/wohnskulpturen/nusstopf.html
+    Redirect 301 /HH/Puzzletisch.html                           https://holzschmiede-hamburg.de/wohnskulpturen/puzzletisch.html
+    Redirect 301 /HH/Tanz_der_Weiden.html                       https://holzschmiede-hamburg.de/wohnskulpturen/tanz-der-weiden.html
+    Redirect 301 /HH/Sitzschwebe.html                           https://holzschmiede-hamburg.de/wohnskulpturen/liegeschwebe.html
+    Redirect 301 /HH/Schaukelstuhl.html                         https://holzschmiede-hamburg.de/wohnskulpturen/schaukelstuhl.html
+    Redirect 301 /HH/Linduo.html                                https://holzschmiede-hamburg.de/wohnskulpturen/linduo.html
+    Redirect 301 /HH/Rundtisch.html                             https://holzschmiede-hamburg.de/wohnskulpturen/rundtische.html
+    Redirect 301 /HH/Garderobenstander.html                     https://holzschmiede-hamburg.de/wohnskulpturen/garderobenstaender.html
+    Redirect 301 /HH/Gemeinsam.html                             https://holzschmiede-hamburg.de/wohnskulpturen/gemeinsam.html
+    Redirect 301 /HH/Vielseiter.html                            https://holzschmiede-hamburg.de/wohnskulpturen/vielseiter.html
+    Redirect 301 /HH/Birkenfu.html                              https://holzschmiede-hamburg.de/wohnskulpturen/birkenfuss.html
     Redirect 301 /Holzschmiede-Hamburg/Die_Holzschmiede.html    https://holzschmiede-hamburg.de
-    Redirect 301 /Holzschmiede-Hamburg/Dreirat.html             https://holzschmiede-hamburg.de/produkte/dreirat.html
-    Redirect 301 /Holzschmiede-Hamburg/Schwingstuhl.html        https://holzschmiede-hamburg.de/produkte/schwingstuhl.html
-    Redirect 301 /Holzschmiede-Hamburg/Sitzschwebe.html         https://holzschmiede-hamburg.de/produkte/liegeschwebe.html
-    Redirect 301 /Holzschmiede-Hamburg/Puzzletisch.html         https://holzschmiede-hamburg.de/produkte/puzzletisch.html
-    Redirect 301 /Holzschmiede-Hamburg/Wrestler.html            https://holzschmiede-hamburg.de/produkte/die-wrestler.html
-    Redirect 301 /Holzschmiede-Hamburg/Walschlund.html          https://holzschmiede-hamburg.de/produkte/walschlund.html
-    Redirect 301 /Holzschmiede-Hamburg/Schaukelstuhl.html       https://holzschmiede-hamburg.de/produkte/schaukelstuhl.html
-    Redirect 301 /Holzschmiede-Hamburg/Bauchtanz.html           https://holzschmiede-hamburg.de/produkte/der-bauchtanz.html
-    Redirect 301 /Holzschmiede-Hamburg/Schaukelliege.html       https://holzschmiede-hamburg.de/produkte/schaukelliege.html
-    Redirect 301 /Holzschmiede-Hamburg/Wengetisch.html          https://holzschmiede-hamburg.de/produkte/wengetisch.html
-    Redirect 301 /Holzschmiede-Hamburg/Gemeinsam.html           https://holzschmiede-hamburg.de/produkte/gemeinsam.html
-    Redirect 301 /Holzschmiede-Hamburg/Linduo.html              https://holzschmiede-hamburg.de/produkte/linduo.html
-    Redirect 301 /Holzschmiede-Hamburg/Birkenfu.html            https://holzschmiede-hamburg.de/produkte/birkenfuss.html
-    Redirect 301 /Holzschmiede-Hamburg/Nussschale.html          https://holzschmiede-hamburg.de/produkte/nussschale.html
-    Redirect 301 /Holzschmiede-Hamburg/Rundtisch.html           https://holzschmiede-hamburg.de/produkte/rundtische.html
-    Redirect 301 /Holzschmiede-Hamburg/Nusstopf.html            https://holzschmiede-hamburg.de/produkte/nusstopf.html
-    Redirect 301 /Holzschmiede-Hamburg/Schwingschale.html       https://holzschmiede-hamburg.de/produkte/schwingschale.html
-    Redirect 301 /HH/Zahnhocker-1.html                          https://holzschmiede-hamburg.de/produkte/zahnhocker.html
-    Redirect 301 /HH/Zahnhocker-2.html                          https://holzschmiede-hamburg.de/produkte/zahnhocker.html
-    Redirect 301 /Holzschmiede-Hamburg/Zahnhocker-2.html        https://holzschmiede-hamburg.de/produkte/zahnhocker.html
-    Redirect 301 /Holzschmiede-Hamburg/Zahnhocker-1.html        https://holzschmiede-hamburg.de/produkte/zahnhocker.html
-    Redirect 301 /HH/CD-Stander.html                            https://holzschmiede-hamburg.de/produkte/cd-staender.html
-    Redirect 301 /Holzschmiede-Hamburg/Garderobenstander.html   https://holzschmiede-hamburg.de/produkte/garderobenstaender.html
-    Redirect 301 /Holzschmiede-Hamburg/Tanz_der_Weiden.html     https://holzschmiede-hamburg.de/produkte/tanz-der-weiden.html
-    Redirect 301 /Holzschmiede-Hamburg/Lampen.html              https://holzschmiede-hamburg.de/produkte/lampen.html
-    Redirect 301 /Holzschmiede-Hamburg/Vielseiter.html          https://holzschmiede-hamburg.de/produkte/vielseiter.html
+    Redirect 301 /Holzschmiede-Hamburg/Dreirat.html             https://holzschmiede-hamburg.de/wohnskulpturen/dreirat.html
+    Redirect 301 /Holzschmiede-Hamburg/Schwingstuhl.html        https://holzschmiede-hamburg.de/wohnskulpturen/schwingstuhl.html
+    Redirect 301 /Holzschmiede-Hamburg/Sitzschwebe.html         https://holzschmiede-hamburg.de/wohnskulpturen/liegeschwebe.html
+    Redirect 301 /Holzschmiede-Hamburg/Puzzletisch.html         https://holzschmiede-hamburg.de/wohnskulpturen/puzzletisch.html
+    Redirect 301 /Holzschmiede-Hamburg/Wrestler.html            https://holzschmiede-hamburg.de/wohnskulpturen/die-wrestler.html
+    Redirect 301 /Holzschmiede-Hamburg/Walschlund.html          https://holzschmiede-hamburg.de/wohnskulpturen/walschlund.html
+    Redirect 301 /Holzschmiede-Hamburg/Schaukelstuhl.html       https://holzschmiede-hamburg.de/wohnskulpturen/schaukelstuhl.html
+    Redirect 301 /Holzschmiede-Hamburg/Bauchtanz.html           https://holzschmiede-hamburg.de/wohnskulpturen/der-bauchtanz.html
+    Redirect 301 /Holzschmiede-Hamburg/Schaukelliege.html       https://holzschmiede-hamburg.de/wohnskulpturen/schaukelliege.html
+    Redirect 301 /Holzschmiede-Hamburg/Wengetisch.html          https://holzschmiede-hamburg.de/wohnskulpturen/wengetisch.html
+    Redirect 301 /Holzschmiede-Hamburg/Gemeinsam.html           https://holzschmiede-hamburg.de/wohnskulpturen/gemeinsam.html
+    Redirect 301 /Holzschmiede-Hamburg/Linduo.html              https://holzschmiede-hamburg.de/wohnskulpturen/linduo.html
+    Redirect 301 /Holzschmiede-Hamburg/Birkenfu.html            https://holzschmiede-hamburg.de/wohnskulpturen/birkenfuss.html
+    Redirect 301 /Holzschmiede-Hamburg/Nussschale.html          https://holzschmiede-hamburg.de/wohnskulpturen/nussschale.html
+    Redirect 301 /Holzschmiede-Hamburg/Rundtisch.html           https://holzschmiede-hamburg.de/wohnskulpturen/rundtische.html
+    Redirect 301 /Holzschmiede-Hamburg/Nusstopf.html            https://holzschmiede-hamburg.de/wohnskulpturen/nusstopf.html
+    Redirect 301 /Holzschmiede-Hamburg/Schwingschale.html       https://holzschmiede-hamburg.de/wohnskulpturen/schwingschale.html
+    Redirect 301 /HH/Zahnhocker-1.html                          https://holzschmiede-hamburg.de/wohnskulpturen/zahnhocker.html
+    Redirect 301 /HH/Zahnhocker-2.html                          https://holzschmiede-hamburg.de/wohnskulpturen/zahnhocker.html
+    Redirect 301 /Holzschmiede-Hamburg/Zahnhocker-2.html        https://holzschmiede-hamburg.de/wohnskulpturen/zahnhocker.html
+    Redirect 301 /Holzschmiede-Hamburg/Zahnhocker-1.html        https://holzschmiede-hamburg.de/wohnskulpturen/zahnhocker.html
+    Redirect 301 /HH/CD-Stander.html                            https://holzschmiede-hamburg.de/wohnskulpturen/cd-staender.html
+    Redirect 301 /Holzschmiede-Hamburg/Garderobenstander.html   https://holzschmiede-hamburg.de/wohnskulpturen/garderobenstaender.html
+    Redirect 301 /Holzschmiede-Hamburg/Tanz_der_Weiden.html     https://holzschmiede-hamburg.de/wohnskulpturen/tanz-der-weiden.html
+    Redirect 301 /Holzschmiede-Hamburg/Lampen.html              https://holzschmiede-hamburg.de/wohnskulpturen/lampen.html
+    Redirect 301 /Holzschmiede-Hamburg/Vielseiter.html          https://holzschmiede-hamburg.de/wohnskulpturen/vielseiter.html
 
     #
     # redirect the images that can be found with googles image search
