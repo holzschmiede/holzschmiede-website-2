@@ -22,7 +22,7 @@ Deny from env=block_bad_bots
 #
 <IfModule mod_headers.c>
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains;"
-    Header set Content-Security-Policy: "default-src 'none'; img-src 'self' https://*.contentful.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'"
+    Header set Content-Security-Policy: "default-src 'none'; img-src 'self' https://*.ctfassets.net; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'"
     Header set X-Content-Type-Options "nosniff"
     Header set X-XSS-Protection "1; mode=block"
 </IfModule>

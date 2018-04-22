@@ -23,7 +23,7 @@
                 {{#each data.entries}}
                     <figure class="column column-block" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
                         <a href="{{ _fileName }}" itemprop="contentUrl">
-                            <img src="{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&fm=jpg&bg=rgb:CCC&fl=progressive&q=80" 
+                            <img src="https:{{fields.pictures.[0].fields.file.url}}?fit=pad&w=300&h=300&fm=jpg&bg=rgb:CCC&fl=progressive&q=80" 
                                 class="thumbnail" alt="{{fields.description}}" title="{{fields.description}}" itemprop="thumbnailUrl" />
                         </a>
                     </figure>                    
