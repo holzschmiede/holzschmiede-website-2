@@ -2,7 +2,7 @@
     title=data.fields.name
     description=data.fields.metaDescription
     keywords=data.fields.metaKeywords 
-    image=(concat "https:" data.fields.pictures.[0].fields.file.url "?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC&fl=progressive&q=80")
+    image=(concat "https:" data.fields.pictures.[0].fields.file.url "?fit=pad&w=1134&h=850&fm=jpg&bg=rgb:CCC&fl=progressive&q=80")
     image_alt=data.fields.pictures.[0].fields.description }}
 
     <!-- 
@@ -24,7 +24,7 @@
                 {{#each data.fields.pictures}}
                     <div class="column column-block">
                         <article>
-                            <img itemprop="image" src="https:{{fields.file.url}}?fit=pad&w=1000&h=550&fm=jpg&bg=rgb:CCC&fl=progressive&q=80"
+                            <img itemprop="image" src="https:{{fields.file.url}}?fit=pad&w=1134&h=850&fm=jpg&bg=rgb:CCC&fl=progressive&q=80"
                                 alt="{{fields.description}}" title="{{fields.description}}" class="thumbnail" />                                            
                         </article>
                     </div>
