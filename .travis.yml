@@ -2,7 +2,6 @@ dist: xenial
 language: node_js
 node_js:
   - "7.7.1"
-cache: npm 
 branches:
   only:
   - master
