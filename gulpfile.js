@@ -8,23 +8,16 @@ const runSequence = require('run-sequence');
 const gReplace = require('gulp-replace');
 const uuid = require('node-uuid');
 const cheerio = require('gulp-cheerio');
+const SftpClient = require('ssh2-sftp-client');
+const gulpSftp = require('gulp-sftp');
 
 //
 // variables
 //
 const localBuildDir = './build';
-const remotePath = '/holzschmiede/';
+const remotePath = '/holzschmiede';
 const remoteGlob = remotePath + '/**/*';
-
-const conn = ftp.create({
-    host: process.env.FTP_HOST,
-    port: process.env.FTP_PORT,
-    user: process.env.FTP_USER,
-    password: process.env.FTP_PASSWORD,
-    parallel  : 1,
-    log: gutil.log,
-    //debug: console.log.bind(console)
-});
+const sftp = new SftpClient();
 
 //
 // tasks
@@ -72,18 +65,36 @@ gulp.task('optimize', function(callback) {
 // deployment
 gulp.task('upload', function() {
     return gulp.src([
-            localBuildDir + '/**/*', 
-            localBuildDir + '/.htaccess'
-        ], {
-            base: localBuildDir, 
-            buffer: false
-        })
-        .pipe(conn.newerOrDifferentSize(remotePath))
-        .pipe(conn.dest(remotePath));
+        localBuildDir + '/**/*', 
+        localBuildDir + '/.htaccess'
+    ], {
+        base: localBuildDir, 
+        buffer: false
+    })
+    .pipe(gulpSftp({
+        host: process.env.FTP_HOST,
+        port: process.env.FTP_PORT,
+        user: process.env.FTP_USER,
+        pass: process.env.FTP_PASSWORD,
+        remotePath: remotePath
+    }));
 });
 
 gulp.task('remove-dir', function (cb) {
-    conn.rmdir(remotePath, cb);
+    return sftp.connect({
+        host: process.env.FTP_HOST,
+        port: process.env.FTP_PORT,
+        user: process.env.FTP_USER,
+        password: process.env.FTP_PASSWORD
+    }).then(() => {
+        return sftp.rmdir(remotePath, true);
+    }).then((msg) => {
+        console.log('remove-dir task reports: ', msg);
+    }).then(() => {
+        sftp.end(); // TODO: upgrade to node 10 so finally can be used instead
+    }).catch((err) => {
+        console.log('error occured in remove-dir: ', err);
+    });
 });
 
 gulp.task('deploy', function(callback) {
